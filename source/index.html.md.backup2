@@ -1,0 +1,293 @@
+---
+title: Public API v1.0.0
+language_tabs:
+  - ruby: Ruby
+  - python: Python
+  - shell: cURL
+language_clients:
+  - ruby: ""
+  - python: ""
+toc_footers: []
+includes: []
+search: false
+highlight_theme: darkula
+headingLevel: 2
+
+---
+
+<!-- Generator: Widdershins v4.0.1 -->
+
+<h1 id="public-api">Public API v1.0.0</h1>
+
+> Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
+
+Public API desc
+
+Base URLs:
+
+* <a href="https://idt-express-api.awsqa.idt.net/">https://idt-express-api.awsqa.idt.net/</a>
+
+* <a href="http://idt-express-api.awsqa.idt.net/">http://idt-express-api.awsqa.idt.net/</a>
+
+<h1 id="public-api-default">Default</h1>
+
+## get_v1_dids_coverage_countries
+
+> Code samples
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'x-api-key' => 'string',
+  'Authorization' => 'string'
+}
+
+result = RestClient.get 'https://idt-express-api.awsqa.idt.net/v1/dids/coverage/countries',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'x-api-key': 'string',
+  'Authorization': 'string'
+}
+
+r = requests.get('https://idt-express-api.awsqa.idt.net/v1/dids/coverage/countries', headers = headers)
+
+print(r.json())
+
+```
+
+`GET /v1/dids/coverage/countries`
+
+<h3 id="get_v1_dids_coverage_countries-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|x-api-key|header|string|true|none|
+|Authorization|header|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "countries": [
+    {
+      "name": "string",
+      "iso": "string",
+      "has_regions": true,
+      "supports_toll_free": true
+    }
+  ],
+  "meta": {
+    "total": 0
+  }
+}
+```
+
+<h3 id="get_v1_dids_coverage_countries-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="get_v1_dids_coverage_countries-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+| countries|[object]|false|none|none|
+| name|string|false|none|country name|
+| iso|string|false|none|ISO Alpha-2 Country Code|
+| has_regions|boolean|false|none|same as states|
+| supports_toll_free|boolean|false|none|whether tollfreee numbers are supported|
+| meta|object|false|none|none|
+| total|number|false|none|total number of countries|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## get_v1_dids_coverage_countries_US_regions
+
+> Code samples
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'x-api-key' => 'string',
+  'Authorization' => 'string'
+}
+
+result = RestClient.get 'https://idt-express-api.awsqa.idt.net/v1/dids/coverage/countries/US/regions',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'x-api-key': 'string',
+  'Authorization': 'string'
+}
+
+r = requests.get('https://idt-express-api.awsqa.idt.net/v1/dids/coverage/countries/US/regions', headers = headers)
+
+print(r.json())
+
+```
+
+`GET /v1/dids/coverage/countries/US/regions`
+
+Only for the US and Canada.
+
+<h3 id="get_v1_dids_coverage_countries_us_regions-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|x-api-key|header|string|true|none|
+|Authorization|header|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "regions": [
+    {
+      "name": "string",
+      "code": "string"
+    }
+  ],
+  "meta": {
+    "total": 0
+  }
+}
+```
+
+> 500 Response
+```json
+{
+  "regions": [
+    {
+      "name": "string",
+      "code": "string"
+    }
+  ],
+  "meta": {
+    "total": 0
+  }
+}
+```
+
+<h3 id="get_v1_dids_coverage_countries_us_regions-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="get_v1_dids_coverage_countries_us_regions-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» regions|[object]|false|none|none|
+|»» name|string|false|none|region name|
+|»» code|string|false|none|country code https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2|
+|» meta|object|false|none|none|
+|»» total|number|false|none|total number of regions|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## Delete number
+
+> Code samples
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => '*/*'
+}
+
+result = RestClient.delete 'https://idt-express-api.awsqa.idt.net/v1/dids/numbers/{number}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': '*/*'
+}
+
+r = requests.delete('https://idt-express-api.awsqa.idt.net/v1/dids/numbers/{number}', headers = headers)
+
+print(r.json())
+
+```
+
+`DELETE /v1/dids/numbers/{number}`
+
+<h3 id="delete-number-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|number|path|integer|true|number|
+
+> Example responses
+
+> 422 Response
+
+<h3 id="delete-number-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|successful operation|None|
+|422|[Unprocessable Entity](https://tools.ietf.org/html/rfc2518#section-10.3)|validation error|Inline|
+
+<h3 id="delete-number-responseschema">Response Schema</h3>
+
+Status Code **422**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» status|string|false|none|status code|
+|» message|string|false|none|message|
+|» request_id|string|false|none|corresponds to API request_id passed in URL|
+|» errors|[object]|false|none|none|
+|»» title|string|false|none|error title|
+|»» id|string|false|none|field id?|
+|»» code|string|false|none|error code|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
